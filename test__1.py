@@ -23,7 +23,7 @@ class Test__888888888888:
         pass
 
     def setup_method(self, method):
-        self.VICTIM = type("VICTIM", (NEW_CLASS____,), {})
+        self.VICTIM = type("VICTIM", (Logger,), {})
 
     # -----------------------------------------------------------------------------------------------------------------
     def test__ClassMethod_and_obj(self):

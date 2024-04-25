@@ -1,4 +1,4 @@
-# logger_aux (v0.0.1)
+# logger_aux (v0.0.2)
 
 ## DESCRIPTION_SHORT
 simple logging
@@ -43,6 +43,10 @@ from logger_aux import *
 
 # NAMES -----------------------
 logger0 = Logger()
+# logger0.LOGGER.debug()    # TypeError: Logger.debug() missing 1 required positional argument: 'msg'
+logger0.LOGGER.debug(None)  # OK
+logger0.LOGGER.debug(True)  # OK
+logger0.LOGGER.debug("")    # OK
 logger0.LOGGER.debug("hello0-1")
 
 logger1 = Logger("logger_first")
@@ -66,42 +70,45 @@ print(f"{logger_dir.FILEPATH=}")
 ------------------------------
 ### 2. logger__logger_first.log
 ```python
-2024-04-25 15:41:46,314[DEBUG](logger_first(main.py).__init__/thread19648(line112))====================================================================================================
-2024-04-25 15:41:46,316[DEBUG](logger_first(main.py).__init__/thread19648(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_first.log'
-2024-04-25 15:41:46,316[DEBUG](logger_first(example1.py).<module>/thread19648(line8))hello1-1
-2024-04-25 15:41:46,319[DEBUG](logger_first(example1.py).<module>/thread19648(line14))hello1-2
+2024-04-25 16:57:20,272[DEBUG](logger_first(main.py).__init__/thread21548(line112))====================================================================================================
+2024-04-25 16:57:20,273[DEBUG](logger_first(main.py).__init__/thread21548(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_first.log'
+2024-04-25 16:57:20,273[DEBUG](logger_first(example1.py).<module>/thread21548(line12))hello1-1
+2024-04-25 16:57:20,275[DEBUG](logger_first(example1.py).<module>/thread21548(line18))hello1-2
 ```
 
 ------------------------------
 ### 3. logger__logger_second.log
 ```python
-2024-04-25 15:41:46,318[DEBUG](logger_second(main.py).__init__/thread19648(line112))====================================================================================================
-2024-04-25 15:41:46,318[DEBUG](logger_second(main.py).__init__/thread19648(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_second.log'
-2024-04-25 15:41:46,318[DEBUG](logger_second(example1.py).<module>/thread19648(line11))hello2-1
-2024-04-25 15:41:46,319[DEBUG](logger_second(example1.py).<module>/thread19648(line15))hello2-2
+2024-04-25 16:57:20,274[DEBUG](logger_second(main.py).__init__/thread21548(line112))====================================================================================================
+2024-04-25 16:57:20,274[DEBUG](logger_second(main.py).__init__/thread21548(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_second.log'
+2024-04-25 16:57:20,275[DEBUG](logger_second(example1.py).<module>/thread21548(line15))hello2-1
+2024-04-25 16:57:20,275[DEBUG](logger_second(example1.py).<module>/thread21548(line19))hello2-2
 ```
 
 ------------------------------
 ### 4. logger__root.log
 ```python
-2024-04-25 15:41:46,312[DEBUG](root(main.py).__init__/thread19648(line112))====================================================================================================
-2024-04-25 15:41:46,313[DEBUG](root(main.py).__init__/thread19648(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__root.log'
-2024-04-25 15:41:46,313[DEBUG](root(example1.py).<module>/thread19648(line5))hello0-1
-2024-04-25 15:41:46,314[DEBUG](logger_first(main.py).__init__/thread19648(line105))logger STREAM started
-2024-04-25 15:41:46,314[DEBUG](logger_first(main.py).__init__/thread19648(line112))====================================================================================================
-2024-04-25 15:41:46,316[DEBUG](logger_first(main.py).__init__/thread19648(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_first.log'
-2024-04-25 15:41:46,316[DEBUG](logger_first(example1.py).<module>/thread19648(line8))hello1-1
-2024-04-25 15:41:46,317[DEBUG](logger_second(main.py).__init__/thread19648(line105))logger STREAM started
-2024-04-25 15:41:46,318[DEBUG](logger_second(main.py).__init__/thread19648(line112))====================================================================================================
-2024-04-25 15:41:46,318[DEBUG](logger_second(main.py).__init__/thread19648(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_second.log'
-2024-04-25 15:41:46,318[DEBUG](logger_second(example1.py).<module>/thread19648(line11))hello2-1
-2024-04-25 15:41:46,319[DEBUG](root(example1.py).<module>/thread19648(line13))hello0-2
-2024-04-25 15:41:46,319[DEBUG](logger_first(example1.py).<module>/thread19648(line14))hello1-2
-2024-04-25 15:41:46,319[DEBUG](logger_second(example1.py).<module>/thread19648(line15))hello2-2
-2024-04-25 15:41:46,320[DEBUG](logger_dir(main.py).__init__/thread19648(line105))logger STREAM started
-2024-04-25 15:41:46,321[DEBUG](logger_dir(main.py).__init__/thread19648(line112))====================================================================================================
-2024-04-25 15:41:46,321[DEBUG](logger_dir(main.py).__init__/thread19648(line113))logger FILE started self._handler_file.baseFilename='c:\\1\\logger__logger_dir.log'
-2024-04-25 15:41:46,321[DEBUG](logger_dir(example1.py).<module>/thread19648(line19))hello_dir
+2024-04-25 16:57:20,269[DEBUG](root(main.py).__init__/thread21548(line112))====================================================================================================
+2024-04-25 16:57:20,269[DEBUG](root(main.py).__init__/thread21548(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__root.log'
+2024-04-25 16:57:20,269[DEBUG](root(example1.py).<module>/thread21548(line6))None
+2024-04-25 16:57:20,269[DEBUG](root(example1.py).<module>/thread21548(line7))True
+2024-04-25 16:57:20,271[DEBUG](root(example1.py).<module>/thread21548(line8))
+2024-04-25 16:57:20,272[DEBUG](root(example1.py).<module>/thread21548(line9))hello0-1
+2024-04-25 16:57:20,272[DEBUG](logger_first(main.py).__init__/thread21548(line105))logger STREAM started
+2024-04-25 16:57:20,272[DEBUG](logger_first(main.py).__init__/thread21548(line112))====================================================================================================
+2024-04-25 16:57:20,273[DEBUG](logger_first(main.py).__init__/thread21548(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_first.log'
+2024-04-25 16:57:20,273[DEBUG](logger_first(example1.py).<module>/thread21548(line12))hello1-1
+2024-04-25 16:57:20,274[DEBUG](logger_second(main.py).__init__/thread21548(line105))logger STREAM started
+2024-04-25 16:57:20,274[DEBUG](logger_second(main.py).__init__/thread21548(line112))====================================================================================================
+2024-04-25 16:57:20,274[DEBUG](logger_second(main.py).__init__/thread21548(line113))logger FILE started self._handler_file.baseFilename='C:\\__STARICHENKO_Element\\PROJECTS\\abc=logger_aux\\EXAMPLES\\logger__logger_second.log'
+2024-04-25 16:57:20,275[DEBUG](logger_second(example1.py).<module>/thread21548(line15))hello2-1
+2024-04-25 16:57:20,275[DEBUG](root(example1.py).<module>/thread21548(line17))hello0-2
+2024-04-25 16:57:20,275[DEBUG](logger_first(example1.py).<module>/thread21548(line18))hello1-2
+2024-04-25 16:57:20,275[DEBUG](logger_second(example1.py).<module>/thread21548(line19))hello2-2
+2024-04-25 16:57:20,276[DEBUG](logger_dir(main.py).__init__/thread21548(line105))logger STREAM started
+2024-04-25 16:57:20,276[DEBUG](logger_dir(main.py).__init__/thread21548(line112))====================================================================================================
+2024-04-25 16:57:20,276[DEBUG](logger_dir(main.py).__init__/thread21548(line113))logger FILE started self._handler_file.baseFilename='c:\\1\\logger__logger_dir.log'
+2024-04-25 16:57:20,277[DEBUG](logger_dir(example1.py).<module>/thread21548(line23))hello_dir
 ```
 
 ********************************************************************************

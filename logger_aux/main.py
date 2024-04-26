@@ -141,7 +141,7 @@ class Logger:
         # run always after connects!
         self._log_init_root()
 
-        # INITIAL MSG -----------------------------------------
+        # INITIAL MSG ---------------------------------------
         self.LOGGER.debug("="*100)
 
         if self.LOG_USE_STREAM:
@@ -150,15 +150,15 @@ class Logger:
         if self.LOG_USE_FILE:
             self.LOGGER.debug(f"[Logger.{self.LOG_NAME}] start FILE=[{self._handler_file.baseFilename}]")
 
-    @classmethod
-    def _log_init_root(cls, *args, **kwargs) -> None:
+    @staticmethod
+    def _log_init_root() -> None:
         """
         DONT USE IT DIRECTLY!!!
         it would used always automated!!!
         """
         logger_root = logging.getLogger()
         if not logger_root.hasHandlers():
-            cls(*args, **kwargs)
+            Logger()        # DONT USE cls()!!!
 
 
 # =====================================================================================================================

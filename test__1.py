@@ -13,7 +13,7 @@ from logger_aux import *
 
 
 # =====================================================================================================================
-class Test__888888888888:
+class Test__1:
     @classmethod
     def setup_class(cls):
         pass
@@ -23,10 +23,21 @@ class Test__888888888888:
         pass
 
     def setup_method(self, method):
-        self.VICTIM = type("VICTIM", (Logger,), {})
+        pass
+        # self.VICTIM = type("VICTIM", (Logger,), {})
+
+    def teardown_method(self, method):
+        pass
 
     # -----------------------------------------------------------------------------------------------------------------
-    def test__ClassMethod_and_obj(self):
+    def test__maxRecursion(self):
+        class Victim(Logger):
+            pass
+
+        victim = Victim()
+        for i in range(3):
+            victim.LOGGER.debug(f"hello-{i}")
+
         assert True
 
 

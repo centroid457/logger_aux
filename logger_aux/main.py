@@ -5,7 +5,7 @@ from logging.handlers import RotatingFileHandler
 
 
 # =====================================================================================================================
-def _example():
+def _example_zero():
     LEVEL = logging.DEBUG
     PATTERN = '%(asctime)s[%(levelname)s](%(name)s(%(filename)s).%(funcName)s/thread%(thread)s(line%(lineno)d))%(msg)s'
     formatter = logging.Formatter(PATTERN)
@@ -30,87 +30,135 @@ def _example():
 
 # =====================================================================================================================
 class Logger:
+    """
+    NOTES:
+        DONT use directly root as secondary logger - use it only as first or it would be applyed automatically!
+    """
+
     # SETTINGS ---------------------------------------
-    NAME: None | str = None     # None="root"
+    LOG_NAME: None | str = None     # None=self "root"="root", if not StrNone=get ClassName!
 
-    LEVEL: int = logging.DEBUG
-    PATTERN: str = '%(asctime)s[%(levelname)s](%(name)s(%(filename)s).%(funcName)s/thread%(thread)s(line%(lineno)d))%(msg)s'
+    LOG_LEVEL: int = logging.DEBUG
+    LOG_PATTERN: str = '%(asctime)s[%(levelname)s]%(name)s(%(filename)s).%(funcName)s(line%(lineno)d)/thread%(thread)s::%(msg)s'
 
-    DIRPATH: None | pathlib.Path = None
+    LOG_DIRPATH: None | pathlib.Path = None
 
-    FILENAME_START: None | str = None
-    FILENAME_EXTENTION: None | str = None
-    FILE_MAXBYTES: int = 1024*100
-    FILE_BACKUPCOUNT: int = 3
+    LOG_FILE_STARTWITH: None | str = None
+    LOG_FILE_EXTENTION: None | str = None
+    LOG_FILE_MAXBYTES: int = 1024 * 100
+    LOG_FILE_BACKUPCOUNT: int = 3
 
-    USE_STREAM: bool = True
-    USE_FILE: bool = True
+    LOG_DISABLE: None | bool = None
+    LOG_USE_STREAM: bool = True
+    LOG_USE_FILE: bool = True
 
     # AUX ---------------------------------------
     _formatter: logging.Formatter
 
     @property
-    def FILENAME(self) -> str:
-        return f"{self.FILENAME_START or 'logger'}__{self.NAME or 'root'}.{self.FILENAME_EXTENTION or 'log'}"
+    def LOG_FILENAME(self) -> str:
+        return f"{self.LOG_FILE_STARTWITH or 'logger'}__{self.LOG_NAME or 'root'}.{self.LOG_FILE_EXTENTION or 'log'}"
 
     @property
-    def FILEPATH(self) -> pathlib.Path:
-        if self.DIRPATH is None:
-            return pathlib.Path(self.FILENAME)
+    def LOG_FILEPATH(self) -> pathlib.Path:
+        if self.LOG_DIRPATH is None:
+            return pathlib.Path(self.LOG_FILENAME)
         else:
-            return self.DIRPATH.joinpath(self.FILENAME)
+            return self.LOG_DIRPATH.joinpath(self.LOG_FILENAME)
 
     def __init__(
             self,
-            name: None | str = None,
-            dirpath: None | str | pathlib.Path = None,
-            level: None | int = None,
-            use_stream: None | bool = None,
-            use_file: None | bool = None,
+            log_name: None | str | Any = None,
+            log_dirpath: None | str | pathlib.Path = None,
+            log_level: None | int = None,
+            log_use_stream: None | bool = None,
+            log_use_file: None | bool = None,
+            log_disable: None | bool = None,
+
+            *args,
+            **kwargs,
     ):
+        super().__init__(*args, **kwargs)
+
         # PARAMS ------------------------------------------
-        if name is not None:
-            self.NAME = name
+        if log_name is not None:
+            self.LOG_NAME = log_name
 
-        if dirpath is not None:
-            self.DIRPATH = pathlib.Path(dirpath)
+        if log_dirpath is not None:
+            self.LOG_DIRPATH = pathlib.Path(log_dirpath)
 
-        if level is not None:
-            self.LEVEL = level
+        if log_level is not None:
+            self.LOG_LEVEL = log_level
 
-        if use_stream is not None:
-            self.USE_STREAM = use_stream
+        if log_use_stream is not None:
+            self.LOG_USE_STREAM = log_use_stream
 
-        if use_file is not None:
-            self.USE_FILE = use_file
+        if log_use_file is not None:
+            self.LOG_USE_FILE = log_use_file
+
+        if log_disable is not None:
+            self.LOG_DISABLE = log_disable
 
         # PREPARE ------------------------------------------
-        # TODO: create DIRPATH
+        if self.LOG_DISABLE:
+            return
+
+        # TODO: create not exists LOG_DIRPATH
+
+        # if log_name as istance!
+        if self.LOG_NAME is None:
+            class_name = self.__class__.__name__
+            if class_name == "Logger":
+                self.LOG_NAME = "root"
+            else:
+                self.LOG_NAME = class_name
+        elif not isinstance(self.LOG_NAME, str):
+            self.LOG_NAME = self.LOG_NAME.__class__.__name__
 
         # INIT ---------------------------------------------
-        self.LOGGER = logging.getLogger(self.NAME)
-        self.LOGGER.setLevel(self.LEVEL)
+        self.LOGGER = logging.getLogger(self.LOG_NAME)
+        self.LOGGER.setLevel(self.LOG_LEVEL)
 
-        self._formatter = logging.Formatter(self.PATTERN)
+        self._formatter = logging.Formatter(self.LOG_PATTERN)
 
         self._handler_stream = None
         self._handler_file = None
 
-        # WORK ---------------------------------------------
-        if self.USE_STREAM:
+        # CONNECT ---------------------------------------------
+        if self.LOG_USE_STREAM:
             self._handler_stream = logging.StreamHandler()
-            # self._handler_stream.setLevel(self.LEVEL)
+            # self._handler_stream.setLevel(self.LOG_LEVEL)
             self._handler_stream.setFormatter(self._formatter)
             self.LOGGER.addHandler(self._handler_stream)
-            self.LOGGER.debug(f"logger STREAM started")
 
-        if self.USE_FILE:
-            self._handler_file = RotatingFileHandler(self.FILEPATH, maxBytes=self.FILE_MAXBYTES, backupCount=self.FILE_BACKUPCOUNT)
-            # self._handler_file.setLevel(self.LEVEL)
+        if self.LOG_USE_FILE:
+            self._handler_file = RotatingFileHandler(self.LOG_FILEPATH, maxBytes=self.LOG_FILE_MAXBYTES, backupCount=self.LOG_FILE_BACKUPCOUNT)
+            # self._handler_file.setLevel(self.LOG_LEVEL)
             self._handler_file.setFormatter(self._formatter)
             self.LOGGER.addHandler(self._handler_file)
-            self.LOGGER.debug("="*100)
-            self.LOGGER.debug(f"logger FILE started {self._handler_file.baseFilename=}")
+
+        # INIT ROOT -----------------------------------------
+        # run always after connects!
+        self._log_init_root()
+
+        # INITIAL MSG -----------------------------------------
+        self.LOGGER.debug("="*100)
+
+        if self.LOG_USE_STREAM:
+            self.LOGGER.debug(f"[Logger.{self.LOG_NAME}] start STREAM")
+
+        if self.LOG_USE_FILE:
+            self.LOGGER.debug(f"[Logger.{self.LOG_NAME}] start FILE=[{self._handler_file.baseFilename}]")
+
+    @classmethod
+    def _log_init_root(cls, *args, **kwargs) -> None:
+        """
+        DONT USE IT DIRECTLY!!!
+        it would used always automated!!!
+        """
+        logger_root = logging.getLogger()
+        if not logger_root.hasHandlers():
+            cls(*args, **kwargs)
 
 
 # =====================================================================================================================

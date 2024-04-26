@@ -1,7 +1,11 @@
 from logger_aux import *
+from object_info import ObjectInfo
+
 
 # NAMES -----------------------
 logger0 = Logger()
+# ObjectInfo(logger0.LOGGER).print()
+
 # logger0.LOGGER.debug()    # TypeError: Logger.debug() missing 1 required positional argument: 'msg'
 logger0.LOGGER.debug(None)  # OK
 logger0.LOGGER.debug(True)  # OK
@@ -18,9 +22,23 @@ logger0.LOGGER.debug("hello0-2")
 logger1.LOGGER.debug("hello1-2")
 logger2.LOGGER.debug("hello2-2")
 
-# DIRPATH -----------------------
+# LOG_DIRPATH -----------------------
 logger_dir = Logger("logger_dir", "c:\\1")
 logger_dir.LOGGER.debug("hello_dir")
 
-print(f"{logger_dir.DIRPATH=}")
-print(f"{logger_dir.FILEPATH=}")
+print(f"{logger_dir.LOG_DIRPATH=}")
+print(f"{logger_dir.LOG_FILEPATH=}")
+
+
+# NESTING -----------------------
+class Example(Logger):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def meth(self):
+        self.LOGGER.debug("hello123")
+
+
+Example().meth()
+
+# ObjectInfo(logger0.LOGGER).print()

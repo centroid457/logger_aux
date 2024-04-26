@@ -2,7 +2,7 @@ from logger_aux import *
 from object_info import ObjectInfo
 
 
-# NAMES -----------------------
+# USAGE-1=DIRECT ===================================
 logger0 = Logger()
 # ObjectInfo(logger0.LOGGER).print()
 
@@ -30,7 +30,7 @@ print(f"{logger_dir.LOG_DIRPATH=}")
 print(f"{logger_dir.LOG_FILEPATH=}")
 
 
-# NESTING -----------------------
+# USAGE-2=NESTING ===================================
 class Example(Logger):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

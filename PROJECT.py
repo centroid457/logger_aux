@@ -35,7 +35,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 2)
+    VERSION: Tuple[int, int, int] = (0, 0, 3)
     TODO: List[str] = [
         "..."
     ]
@@ -43,7 +43,14 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "add zero examples"
+        ["[BIG REF]",
+            "MAIN goal=to nesting usage (add 'log_*' to all attributes)",
+            "improve pattern",
+            "apply name as classmane",
+            "add log_disable",
+            "fix initial msg",
+            "add autoapply _log_init_root",
+         ]
     ]
 
     # FINALIZE -----------------------------------------------

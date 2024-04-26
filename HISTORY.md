@@ -11,6 +11,16 @@
 ********************************************************************************
 ## NEWS
 
+0.0.3 (2024/04/26 11:04:07)
+------------------------------
+- [BIG REF]:  
+	- MAIN goal=to nesting usage (add 'log_*' to all attributes)  
+	- improve pattern  
+	- apply name as classmane  
+	- add log_disable  
+	- fix initial msg  
+	- add autoapply _log_init_root  
+
 0.0.2 (2024/04/25 16:56:20)
 ------------------------------
 - add zero examples  

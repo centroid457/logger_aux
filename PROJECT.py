@@ -35,7 +35,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 4)
+    VERSION: Tuple[int, int, int] = (0, 0, 5)
     TODO: List[str] = [
         "..."
     ]
@@ -43,8 +43,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "fix maxRecursion exceded",
-        "try add tests",
+        "change LOG_FILE_MAXBYTES: int = 1024 * 1024 * 10",
     ]
 
     # FINALIZE -----------------------------------------------

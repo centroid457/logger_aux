@@ -1,4 +1,4 @@
-# logger_aux (v0.0.4)
+# logger_aux (v0.0.5)
 
 ## DESCRIPTION_SHORT
 simple logging

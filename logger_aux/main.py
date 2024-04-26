@@ -45,7 +45,7 @@ class Logger:
 
     LOG_FILE_STARTWITH: None | str = None
     LOG_FILE_EXTENTION: None | str = None
-    LOG_FILE_MAXBYTES: int = 1024 * 100
+    LOG_FILE_MAXBYTES: int = 1024 * 1024 * 10
     LOG_FILE_BACKUPCOUNT: int = 3
 
     LOG_DISABLE: None | bool = None

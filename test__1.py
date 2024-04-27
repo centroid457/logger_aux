@@ -1,4 +1,5 @@
 import os
+import time
 import pytest
 import pathlib
 import shutil
@@ -39,6 +40,17 @@ class Test__1:
             victim.LOGGER.debug(f"hello-{i}")
 
         assert True
+
+    def test__disable(self):
+        class VictimDisabled(Logger):
+            LOG_ENABLE = False
+
+        victim = VictimDisabled()
+        victim.LOGGER.debug(f"VictimDisabled")
+
+        time.sleep(0.2)
+
+        assert not victim.LOG_FILEPATH.exists()
 
 
 # =====================================================================================================================

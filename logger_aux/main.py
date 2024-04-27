@@ -48,7 +48,8 @@ class Logger:
     LOG_FILE_MAXBYTES: int = 1024 * 1024 * 10
     LOG_FILE_BACKUPCOUNT: int = 3
 
-    LOG_DISABLE: None | bool = None
+    LOG_ENABLE: None | bool = False
+
     LOG_USE_STREAM: bool = True
     LOG_USE_FILE: bool = True
 
@@ -73,7 +74,7 @@ class Logger:
             log_level: None | int = None,
             log_use_stream: None | bool = None,
             log_use_file: None | bool = None,
-            log_disable: None | bool = None,
+            log_enable: None | bool = None,
 
             *args,
             **kwargs,
@@ -96,15 +97,10 @@ class Logger:
         if log_use_file is not None:
             self.LOG_USE_FILE = log_use_file
 
-        if log_disable is not None:
-            self.LOG_DISABLE = log_disable
+        if log_enable is not None:
+            self.LOG_ENABLE = log_enable
 
         # PREPARE ------------------------------------------
-        if self.LOG_DISABLE:
-            return
-
-        # TODO: create not exists LOG_DIRPATH
-
         # if log_name as istance!
         if self.LOG_NAME is None:
             class_name = self.__class__.__name__
@@ -115,8 +111,16 @@ class Logger:
         elif not isinstance(self.LOG_NAME, str):
             self.LOG_NAME = self.LOG_NAME.__class__.__name__
 
-        # INIT ---------------------------------------------
         self.LOGGER = logging.getLogger(self.LOG_NAME)
+
+        # DISABLE ------------------------------------------
+        if not self.LOG_ENABLE:
+            return
+
+        # --------------------------------------------------
+        # TODO: create not exists LOG_DIRPATH
+
+        # INIT ---------------------------------------------
         self.LOGGER.setLevel(self.LOG_LEVEL)
 
         self._formatter = logging.Formatter(self.LOG_PATTERN)
@@ -124,7 +128,7 @@ class Logger:
         self._handler_stream = None
         self._handler_file = None
 
-        # CONNECT ---------------------------------------------
+        # CONNECT -------------------------------------------
         if self.LOG_USE_STREAM:
             self._handler_stream = logging.StreamHandler()
             # self._handler_stream.setLevel(self.LOG_LEVEL)

@@ -35,7 +35,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 6)
+    VERSION: Tuple[int, int, int] = (0, 0, 7)
     TODO: List[str] = [
         "..."
     ]
@@ -43,10 +43,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        ["[LOG_ENABLE]",
-            "FIX - now its work!",
-            "set FALSE as default - you need enable it if you wish",
-         ],
+        "[LOG_ENABLE] fix root ENABLE only if any one is ENABLE",
     ]
 
     # FINALIZE -----------------------------------------------

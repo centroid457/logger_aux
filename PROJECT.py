@@ -35,7 +35,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 5)
+    VERSION: Tuple[int, int, int] = (0, 0, 6)
     TODO: List[str] = [
         "..."
     ]
@@ -43,7 +43,10 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "change LOG_FILE_MAXBYTES: int = 1024 * 1024 * 10",
+        ["[LOG_ENABLE]",
+            "FIX - now its work!",
+            "set FALSE as default - you need enable it if you wish",
+         ],
     ]
 
     # FINALIZE -----------------------------------------------

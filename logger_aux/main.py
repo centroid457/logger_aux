@@ -114,7 +114,10 @@ class Logger:
         self.LOGGER = logging.getLogger(self.LOG_NAME)
 
         # DISABLE ------------------------------------------
-        if not self.LOG_ENABLE:
+        if self.LOG_NAME == "root" and log_enable:
+            pass
+
+        elif not self.LOG_ENABLE:
             return
 
         # --------------------------------------------------
@@ -155,14 +158,16 @@ class Logger:
             self.LOGGER.debug(f"[Logger.{self.LOG_NAME}] start FILE=[{self._handler_file.baseFilename}]")
 
     @staticmethod
-    def _log_init_root() -> None:
+    def _log_init_root(log_enable: bool = None) -> None:
         """
         DONT USE IT DIRECTLY!!!
         it would used always automated!!!
         """
+        if not log_enable:
+            return
         logger_root = logging.getLogger()
         if not logger_root.hasHandlers():
-            Logger()        # DONT USE cls()!!!
+            Logger(log_enable=log_enable)        # DONT USE cls()!!!
 
 
 # =====================================================================================================================

@@ -33,6 +33,7 @@ class Test__1:
     # -----------------------------------------------------------------------------------------------------------------
     def test__maxRecursion(self):
         class Victim(Logger):
+            LOG_ENABLE = True
             pass
 
         victim = Victim()

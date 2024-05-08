@@ -55,6 +55,7 @@ class Logger:
 
     # AUX ---------------------------------------
     _formatter: logging.Formatter
+    LOGGER: Self = None
 
     @property
     def LOG_FILENAME(self) -> str:
@@ -110,6 +111,11 @@ class Logger:
                 self.LOG_NAME = class_name
         elif not isinstance(self.LOG_NAME, str):
             self.LOG_NAME = self.LOG_NAME.__class__.__name__
+
+        # if not self.__class__.LOGGER:
+        #     # place here MRO name??? for classmethods???
+        #     # useful for methods starts after inited first instance
+        #     self.__class__.LOGGER = logging.getLogger(self.LOG_NAME)
 
         self.LOGGER = logging.getLogger(self.LOG_NAME)
 

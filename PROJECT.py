@@ -35,7 +35,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 8)
+    VERSION: Tuple[int, int, int] = (0, 0, 9)
     TODO: List[str] = [
         "..."
     ]
@@ -43,7 +43,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[LOGGER] set default LOG_USE_FILE to False",
+        "fix several_same_creations + add tests",
     ]
 
     # FINALIZE -----------------------------------------------

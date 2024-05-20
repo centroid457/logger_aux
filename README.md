@@ -1,4 +1,4 @@
-# logger_aux (v0.0.7)
+# logger_aux (v0.0.8)
 
 ## DESCRIPTION_SHORT
 simple logging
@@ -106,6 +106,10 @@ Example().meth()
 2024-04-27 14:57:41,959[DEBUG]Example(main.py).__init__(line155)/thread32520::[Logger.Example] start STREAM
 2024-04-27 14:57:41,959[DEBUG]Example(main.py).__init__(line158)/thread32520::[Logger.Example] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__Example.log]
 2024-04-27 14:57:41,959[DEBUG]Example(example1.py).meth(line41)/thread32520::hello123
+2024-04-27 15:27:49,968[DEBUG]Example(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,968[DEBUG]Example(main.py).__init__(line155)/thread28020::[Logger.Example] start STREAM
+2024-04-27 15:27:49,969[DEBUG]Example(main.py).__init__(line158)/thread28020::[Logger.Example] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__Example.log]
+2024-04-27 15:27:49,969[DEBUG]Example(example1.py).meth(line41)/thread28020::hello123
 ```
 
 ------------------------------
@@ -126,6 +130,11 @@ Example().meth()
 2024-04-27 14:57:41,955[DEBUG]logger_first(main.py).__init__(line158)/thread32520::[Logger.logger_first] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__logger_first.log]
 2024-04-27 14:57:41,955[DEBUG]logger_first(example1.py).<module>(line16)/thread32520::hello1-1
 2024-04-27 14:57:41,957[DEBUG]logger_first(example1.py).<module>(line22)/thread32520::hello1-2
+2024-04-27 15:27:49,963[DEBUG]logger_first(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,963[DEBUG]logger_first(main.py).__init__(line155)/thread28020::[Logger.logger_first] start STREAM
+2024-04-27 15:27:49,964[DEBUG]logger_first(main.py).__init__(line158)/thread28020::[Logger.logger_first] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__logger_first.log]
+2024-04-27 15:27:49,964[DEBUG]logger_first(example1.py).<module>(line16)/thread28020::hello1-1
+2024-04-27 15:27:49,966[DEBUG]logger_first(example1.py).<module>(line22)/thread28020::hello1-2
 ```
 
 ------------------------------
@@ -146,6 +155,11 @@ Example().meth()
 2024-04-27 14:57:41,956[DEBUG]logger_second(main.py).__init__(line158)/thread32520::[Logger.logger_second] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__logger_second.log]
 2024-04-27 14:57:41,956[DEBUG]logger_second(example1.py).<module>(line19)/thread32520::hello2-1
 2024-04-27 14:57:41,957[DEBUG]logger_second(example1.py).<module>(line23)/thread32520::hello2-2
+2024-04-27 15:27:49,964[DEBUG]logger_second(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,965[DEBUG]logger_second(main.py).__init__(line155)/thread28020::[Logger.logger_second] start STREAM
+2024-04-27 15:27:49,965[DEBUG]logger_second(main.py).__init__(line158)/thread28020::[Logger.logger_second] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__logger_second.log]
+2024-04-27 15:27:49,966[DEBUG]logger_second(example1.py).<module>(line19)/thread28020::hello2-1
+2024-04-27 15:27:49,966[DEBUG]logger_second(example1.py).<module>(line23)/thread28020::hello2-2
 ```
 
 ------------------------------
@@ -229,6 +243,32 @@ Example().meth()
 2024-04-27 14:57:41,959[DEBUG]Example(main.py).__init__(line155)/thread32520::[Logger.Example] start STREAM
 2024-04-27 14:57:41,959[DEBUG]Example(main.py).__init__(line158)/thread32520::[Logger.Example] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__Example.log]
 2024-04-27 14:57:41,959[DEBUG]Example(example1.py).meth(line41)/thread32520::hello123
+2024-04-27 15:27:49,962[DEBUG]root(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,962[DEBUG]root(main.py).__init__(line155)/thread28020::[Logger.root] start STREAM
+2024-04-27 15:27:49,962[DEBUG]root(main.py).__init__(line158)/thread28020::[Logger.root] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__root.log]
+2024-04-27 15:27:49,962[DEBUG]root(example1.py).<module>(line10)/thread28020::None
+2024-04-27 15:27:49,963[DEBUG]root(example1.py).<module>(line11)/thread28020::True
+2024-04-27 15:27:49,963[DEBUG]root(example1.py).<module>(line12)/thread28020::
+2024-04-27 15:27:49,963[DEBUG]root(example1.py).<module>(line13)/thread28020::hello0-1
+2024-04-27 15:27:49,963[DEBUG]logger_first(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,963[DEBUG]logger_first(main.py).__init__(line155)/thread28020::[Logger.logger_first] start STREAM
+2024-04-27 15:27:49,964[DEBUG]logger_first(main.py).__init__(line158)/thread28020::[Logger.logger_first] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__logger_first.log]
+2024-04-27 15:27:49,964[DEBUG]logger_first(example1.py).<module>(line16)/thread28020::hello1-1
+2024-04-27 15:27:49,964[DEBUG]logger_second(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,965[DEBUG]logger_second(main.py).__init__(line155)/thread28020::[Logger.logger_second] start STREAM
+2024-04-27 15:27:49,965[DEBUG]logger_second(main.py).__init__(line158)/thread28020::[Logger.logger_second] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__logger_second.log]
+2024-04-27 15:27:49,966[DEBUG]logger_second(example1.py).<module>(line19)/thread28020::hello2-1
+2024-04-27 15:27:49,966[DEBUG]root(example1.py).<module>(line21)/thread28020::hello0-2
+2024-04-27 15:27:49,966[DEBUG]logger_first(example1.py).<module>(line22)/thread28020::hello1-2
+2024-04-27 15:27:49,966[DEBUG]logger_second(example1.py).<module>(line23)/thread28020::hello2-2
+2024-04-27 15:27:49,966[DEBUG]logger_dir(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,967[DEBUG]logger_dir(main.py).__init__(line155)/thread28020::[Logger.logger_dir] start STREAM
+2024-04-27 15:27:49,968[DEBUG]logger_dir(main.py).__init__(line158)/thread28020::[Logger.logger_dir] start FILE=[c:\1\logger__logger_dir.log]
+2024-04-27 15:27:49,968[DEBUG]logger_dir(example1.py).<module>(line27)/thread28020::hello_dir
+2024-04-27 15:27:49,968[DEBUG]Example(main.py).__init__(line152)/thread28020::====================================================================================================
+2024-04-27 15:27:49,968[DEBUG]Example(main.py).__init__(line155)/thread28020::[Logger.Example] start STREAM
+2024-04-27 15:27:49,969[DEBUG]Example(main.py).__init__(line158)/thread28020::[Logger.Example] start FILE=[C:\__STARICHENKO_Element\PROJECTS\abc=logger_aux\EXAMPLES\logger__Example.log]
+2024-04-27 15:27:49,969[DEBUG]Example(example1.py).meth(line41)/thread28020::hello123
 ```
 
 ********************************************************************************

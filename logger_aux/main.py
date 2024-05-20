@@ -49,9 +49,8 @@ class Logger:
     LOG_FILE_BACKUPCOUNT: int = 3
 
     LOG_ENABLE: None | bool = False
-
     LOG_USE_STREAM: bool = True
-    LOG_USE_FILE: bool = True
+    LOG_USE_FILE: bool = False
 
     # AUX ---------------------------------------
     _formatter: logging.Formatter

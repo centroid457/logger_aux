@@ -53,5 +53,17 @@ class Test__1:
 
         assert not victim.LOG_FILEPATH.exists()
 
+    def test__several_same_creations(self):
+        # in case of starting several times like in ClientRequestsItem! see there!
+        class Victim(Logger):
+            LOG_ENABLE = True
+
+        victim1 = Victim()
+        assert len(victim1.LOGGER.handlers) == 1
+        victim2 = Victim()
+        assert len(victim2.LOGGER.handlers) == 1
+        victim3 = Victim()
+        assert len(victim3.LOGGER.handlers) == 1
+
 
 # =====================================================================================================================

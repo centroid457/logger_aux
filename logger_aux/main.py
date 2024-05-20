@@ -36,7 +36,7 @@ class Logger:
     """
 
     # SETTINGS ---------------------------------------
-    LOG_NAME: None | str = None     # None=self "root"="root", if not StrNone=get ClassName!
+    LOG_NAME: None | str = None  # None=self "root"="root", if not StrNone=get ClassName!
 
     LOG_LEVEL: int = logging.DEBUG
     LOG_PATTERN: str = '%(asctime)s[%(levelname)s]%(name)s(%(filename)s).%(funcName)s(line%(lineno)d)/thread%(thread)s::%(msg)s'
@@ -55,6 +55,9 @@ class Logger:
     # AUX ---------------------------------------
     _formatter: logging.Formatter
     LOGGER: Self = None
+
+    _handler_stream: logging.StreamHandler | None = None
+    _handler_file: logging.FileHandler | None = None
 
     @property
     def LOG_FILENAME(self) -> str:
@@ -109,6 +112,7 @@ class Logger:
             else:
                 self.LOG_NAME = class_name
         elif not isinstance(self.LOG_NAME, str):
+            # if set name by passing object
             self.LOG_NAME = self.LOG_NAME.__class__.__name__
 
         # if not self.__class__.LOGGER:
@@ -125,6 +129,9 @@ class Logger:
         elif not self.LOG_ENABLE:
             return
 
+        if self.LOGGER.handlers:  # already created logger from previous inition
+            return
+
         # --------------------------------------------------
         # TODO: create not exists LOG_DIRPATH
 
@@ -133,15 +140,12 @@ class Logger:
 
         self._formatter = logging.Formatter(self.LOG_PATTERN)
 
-        self._handler_stream = None
-        self._handler_file = None
-
         # CONNECT -------------------------------------------
         if self.LOG_USE_STREAM:
-            self._handler_stream = logging.StreamHandler()
-            # self._handler_stream.setLevel(self.LOG_LEVEL)
-            self._handler_stream.setFormatter(self._formatter)
-            self.LOGGER.addHandler(self._handler_stream)
+            self.__class__._handler_stream = logging.StreamHandler()
+            # self.__class__._handler_stream.setLevel(self.LOG_LEVEL)
+            self.__class__._handler_stream.setFormatter(self._formatter)
+            self.LOGGER.addHandler(self.__class__._handler_stream)
 
         if self.LOG_USE_FILE:
             self._handler_file = RotatingFileHandler(self.LOG_FILEPATH, maxBytes=self.LOG_FILE_MAXBYTES, backupCount=self.LOG_FILE_BACKUPCOUNT)
@@ -172,7 +176,7 @@ class Logger:
             return
         logger_root = logging.getLogger()
         if not logger_root.hasHandlers():
-            Logger(log_enable=log_enable)        # DONT USE cls()!!!
+            Logger(log_enable=log_enable)  # DONT USE cls()!!!
 
 
 # =====================================================================================================================

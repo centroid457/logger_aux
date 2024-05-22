@@ -48,7 +48,7 @@ class Logger:
     LOG_FILE_MAXBYTES: int = 1024 * 1024 * 10
     LOG_FILE_BACKUPCOUNT: int = 3
 
-    LOG_ENABLE: None | bool = False
+    LOG_ENABLE: None | bool = False     # you need to turnON if you need it!
     LOG_USE_STREAM: bool = True
     LOG_USE_FILE: bool = False
 

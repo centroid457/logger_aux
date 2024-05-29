@@ -54,7 +54,7 @@ class Logger:
 
     # AUX ---------------------------------------
     _formatter: logging.Formatter
-    LOGGER: Self = None
+    LOGGER: logging.Logger | None = None
 
     _handler_stream: logging.StreamHandler | None = None
     _handler_file: logging.FileHandler | None = None

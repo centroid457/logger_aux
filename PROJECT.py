@@ -35,7 +35,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 10)
+    VERSION: Tuple[int, int, int] = (0, 0, 11)
     TODO: List[str] = [
         "..."
     ]
@@ -43,8 +43,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "[__INIT__.py] fix import",
-        "apply last pypi template",
+        "fix annotation for LOGGER"
     ]
 
     # FINALIZE -----------------------------------------------

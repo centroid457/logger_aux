@@ -35,7 +35,7 @@ class PROJECT:
     ]
 
     # HISTORY -----------------------------------------------
-    VERSION: Tuple[int, int, int] = (0, 0, 11)
+    VERSION: Tuple[int, int, int] = (0, 0, 12)
     TODO: List[str] = [
         "..."
     ]
@@ -43,7 +43,7 @@ class PROJECT:
         "..."
     ]
     NEWS: List[str] = [
-        "fix annotation for LOGGER"
+        "MOVE ALL INTO BASE_AUX"
     ]
 
     # FINALIZE -----------------------------------------------
